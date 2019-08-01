@@ -11,10 +11,10 @@ import com.app.navneet.repository.ProductRepository;
 
 @Service
 public class ProductServiceImpl implements ProductService {
-  
+
 	@Autowired
 	private ProductRepository productRepository;
-	
+
 	@Override
 	@PrintLogOn
 	public Product add(Product p) {
@@ -26,6 +26,16 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getProductList() {
 		// TODO Auto-generated method stub
 		return productRepository.findAll();
+	}
+
+	@Override
+	public boolean deleteProduct(Long id) {
+		try {
+			this.productRepository.deleteById(id);
+		} catch (Exception e) {
+			return false;
+		}
+		return true;
 	}
 
 }

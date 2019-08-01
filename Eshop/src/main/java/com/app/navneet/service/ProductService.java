@@ -8,5 +8,6 @@ public interface ProductService {
 	
 	public Product add(Product p);
 	public List<Product> getProductList();
+	public boolean deleteProduct(Long id);
 
 }
