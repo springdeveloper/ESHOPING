@@ -38,4 +38,10 @@ public class ProductServiceImpl implements ProductService {
 		return true;
 	}
 
+	@Override
+	public Product editProduct(Long id) {
+		// TODO Auto-generated method stub
+		return this.productRepository.findById(id).isPresent()?this.productRepository.findById(id).get():null;
+	}
+
 }

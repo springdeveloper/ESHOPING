@@ -31,7 +31,6 @@ public class HomeController {
 	@LogExecutionTime
 	@PrintLogOn
 	public ResponseEntity<Product> getData(@RequestBody Product product) {
-		Product pr = new Product("Apple", 123.45);
 		return new ResponseEntity<Product>(productService.add(product), HttpStatus.CREATED);
 	}
 
@@ -47,6 +46,14 @@ public class HomeController {
 	public ResponseEntity<?> deleteByID(@PathVariable("id") Long id) {
 		System.out.println("Delete");
 		return new ResponseEntity<>(productService.deleteProduct(id), HttpStatus.ACCEPTED);
+	}
+	
+	@GetMapping("/edit/{id}")
+	@LogExecutionTime
+	@PrintLogOn
+	public ResponseEntity<?> editByID(@PathVariable("id") Long id) {
+		System.out.println("Edite");
+		return new ResponseEntity<>(productService.editProduct(id), HttpStatus.ACCEPTED);
 	}
 
 }
